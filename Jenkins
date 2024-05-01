@@ -1,0 +1,57 @@
+pipeline{
+    agent any
+    stages{
+        stage("Build"){
+            steps {
+                echo "Building code with Maven"
+                }
+            }
+            stage("Unit and integration tests"){
+                steps {
+                    echo "Running unit tests, ensuring code functions properly"
+                    echo "Ensuring code is integrated properly"
+                }
+            }
+              post{
+                success{
+                    mail to: "ethanlongmuir89@gmail.com"
+                    subject: "Unit test"
+                    body: "Task sucessful"
+                }
+            }
+            stage("Code Analysis"){
+                steps {
+                    echo "Installing PMD code analysis"
+                    echo "Complete"
+                }
+            }
+            stage("Security Scan") {
+                steps {
+                    echo "Installing Probely Scanner"                   
+                }                
+            }
+              post{
+                success{
+                    mail to: "ethanlongmuir89@gmail.com"
+                    subject: "Security Scan"
+                    body: "Task sucessful"
+                }
+            }
+            stage("Deploy to staging") {
+                steps {
+                    echo "Dedploying to staging server: AWS EC2"
+                }
+            }
+            stage("Integration Tests on Staging") {
+                steps {
+                    echo "Running integration test on staging environment"
+                }
+            }
+            stage("Deploy to Production") {
+                steps {
+                    echo "Deploying to AWS EC2 instance"
+                }
+            }          
+        }
+    }
+}
