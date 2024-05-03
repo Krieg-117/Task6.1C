@@ -13,9 +13,9 @@ pipeline{
                 }
                  post{
                     success{
-                        mail to: "ethanlongmuir89@gmail.com"
+                        mail (to: "ethanlongmuir89@gmail.com"
                         subject: "Unit test"
-                        body: "Task sucessful"
+                        body: "Task sucessful")
                 }
             }
              
@@ -32,9 +32,9 @@ pipeline{
                 }   
                  post{
                      success{
-                        mail to: "ethanlongmuir89@gmail.com"
+                        mail (to: "ethanlongmuir89@gmail.com"
                         subject: "Security Scan"
-                        body: "Task sucessful"
+                        body: "Task sucessful")
                 }
             }
             }
