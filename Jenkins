@@ -10,14 +10,14 @@ pipeline{
                 steps {
                     echo "Running unit tests, ensuring code functions properly"
                     echo "Ensuring code is integrated properly"
+                    post{
+                        success{
+                            mail to: "ethanlongmuir89@gmail.com"
+                            subject: "Unit test"
+                            body: "Task sucessful"
+                        }
+                    }
                 }
-                 post{
-                    success{
-                        mail (to: "ethanlongmuir89@gmail.com"
-                        subject: "Unit test"
-                        body: "Task sucessful")
-                }
-            }
              
             }
             stage("Code Analysis"){
@@ -28,15 +28,15 @@ pipeline{
             }
             stage("Security Scan") {
                 steps {
-                    echo "Installing Probely Scanner"                   
-                }   
-                 post{
+                    echo "Installing Probely Scanner"   
+                    post{
                      success{
-                        mail (to: "ethanlongmuir89@gmail.com"
+                        mail to: "ethanlongmuir89@gmail.com"
                         subject: "Security Scan"
-                        body: "Task sucessful")
+                        body: "Task sucessful"
+                        }   
+                    }
                 }
-            }
             }
             stage("Deploy to staging") {
                 steps {
