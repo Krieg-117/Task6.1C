@@ -32,8 +32,8 @@ pipeline{
                 }
              post{
                 success{
-                        mail to: "ethanlongmuir89@gmail.com"
-                        subject: "Security Scan"
+                        mail to: "ethanlongmuir89@gmail.com",
+                        subject: "Security Scan",
                         body: "Task sucessful"
                         }   
                  }
